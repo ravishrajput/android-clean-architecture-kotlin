@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+def globalConf = rootProject.ext
+
+android {
+    compileSdk androidTargetSdkVersion
+
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "com.ravish.android.clean.architecture.kotlin"
+        minSdk globalConf.androidMinSdkVersion
+        targetSdk globalConf.androidTargetSdkVersion
+        versionCode 1
+        versionName globalConf.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            testCoverageEnabled true
+            debuggable true
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    Map<String, String> dependencies = globalConf.dependencies
+
+    implementation dependencies.androidxCore
+    implementation dependencies.appCompatKtx
+    implementation dependencies.androidMaterial
+    implementation dependencies.androidConstraintLayout
+
+    kapt dependencies.hiltCompiler
+    implementation dependencies.hilt
+
+    implementation dependencies.retrofit
+    implementation dependencies.retrofitConverterGson
+    implementation dependencies.okhttp
+    implementation dependencies.okhttpLogging
+
+    implementation dependencies.glide
+
+    testImplementation dependencies.jUnit
+
+    androidTestImplementation dependencies.testRunner
+    androidTestImplementation dependencies.androidTestJUnit
+    androidTestImplementation dependencies.androidTestEspresso
+}
