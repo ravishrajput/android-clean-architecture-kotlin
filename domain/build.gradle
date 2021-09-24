@@ -1,0 +1,51 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+def globalConf = rootProject.ext
+
+android {
+    compileSdk androidTargetSdkVersion
+
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        minSdk globalConf.androidMinSdkVersion
+        targetSdk globalConf.androidTargetSdkVersion
+        versionCode 1
+        versionName globalConf.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+            debuggable true
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    Map<String, String> dependencies = globalConf.dependencies
+
+    kapt dependencies.hiltCompiler
+    implementation dependencies.hilt
+}

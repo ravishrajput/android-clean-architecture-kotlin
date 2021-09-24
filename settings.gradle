@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "android-clean-architecture-kotlin"
 include ':app'
+include ':domain'
+include ':data'
