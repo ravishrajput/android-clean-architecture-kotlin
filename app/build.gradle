@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
 
 def globalConf = rootProject.ext
@@ -10,8 +12,8 @@ def globalConf = rootProject.ext
 android {
     compileSdk androidTargetSdkVersion
 
-    dataBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding true
     }
 
     defaultConfig {
@@ -52,10 +54,15 @@ kapt {
 dependencies {
     Map<String, String> dependencies = globalConf.dependencies
 
+    implementation project(':domain')
+
     implementation dependencies.androidxCore
     implementation dependencies.appCompatKtx
     implementation dependencies.androidMaterial
     implementation dependencies.androidConstraintLayout
+    implementation dependencies.navGraphFragment
+    implementation dependencies.navGraphUI
+    implementation dependencies.androidLifecycle
 
     kapt dependencies.hiltCompiler
     implementation dependencies.hilt

@@ -1,8 +1,11 @@
-package com.ravish.android.clean.architecture.kotlin
+package com.ravish.android.clean.architecture.kotlin.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ravish.android.clean.architecture.kotlin.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
