@@ -4,8 +4,9 @@ import com.ravish.android.clean.architecture.data.apis.UserApi
 import com.ravish.android.clean.architecture.data.mappers.UserMapper
 import com.ravish.android.clean.architecture.domain.models.UserDetails
 import com.ravish.android.clean.architecture.domain.repositories.UserInfoRepo
+import javax.inject.Inject
 
-class UserInfoRepoImpl constructor(
+class UserInfoRepoImpl @Inject constructor(
     private val userApi: UserApi,
     private val userMapper: UserMapper
 ) : UserInfoRepo {
