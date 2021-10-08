@@ -64,6 +64,7 @@ dependencies {
     implementation dependencies.navGraphFragment
     implementation dependencies.navGraphUI
     implementation dependencies.androidLifecycle
+    implementation dependencies.networkingLib
 
     kapt dependencies.hiltCompiler
     implementation dependencies.hilt

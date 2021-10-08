@@ -7,3 +7,5 @@ data class UserDataModel(
     var email: String,
     var imageUrl: String
 )
+
+data class UsersData(val users: List<UserDataModel>)

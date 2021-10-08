@@ -1,6 +1,7 @@
 package com.ravish.android.clean.architecture.data.di
 
 import com.ravish.android.clean.architecture.data.BuildConfig
+import com.ravish.android.clean.architecture.data.network.AuthenticationInterceptor
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,6 +28,7 @@ class NetworkModule {
             })
         }
         connectTimeout(timeout, TimeUnit.SECONDS)
+        addInterceptor(AuthenticationInterceptor())
     }.build()
 
     @Provides

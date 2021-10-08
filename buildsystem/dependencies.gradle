@@ -13,6 +13,8 @@ ext {
             androidConstraintLayout: "androidx.constraintlayout:constraintlayout:2.1.0",
             androidLifecycle       : "androidx.lifecycle:lifecycle-common-java8:2.0.0",
 
+            networkingLib          : "com.ravishrajput:coroutines-networking:0.1.2",
+
             navGraphFragment       : "androidx.navigation:navigation-fragment-ktx:$nav_version",
             navGraphUI             : "androidx.navigation:navigation-ui-ktx:$nav_version",
 

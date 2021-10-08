@@ -10,7 +10,7 @@ class UserInfoRepoImpl @Inject constructor(
     private val userApi: UserApi,
     private val userMapper: UserMapper
 ) : UserInfoRepo {
-    override suspend fun getUsersList(): List<UserDetails> = userApi.getUsersList().map {
+    override suspend fun getUsersList(): List<UserDetails> = userApi.getUsersList().users.map {
         userMapper.toUserDetails(it)
     }
 
