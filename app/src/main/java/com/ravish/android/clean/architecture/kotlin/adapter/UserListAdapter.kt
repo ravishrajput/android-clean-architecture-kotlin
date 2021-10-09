@@ -8,12 +8,17 @@ import com.ravish.android.clean.architecture.kotlin.delegates.BoundHolder
 import com.ravish.android.clean.architecture.kotlin.delegates.viewBinding
 import com.ravish.android.clean.architecture.kotlin.models.User
 
-class UserListAdapter : ListAdapter<User, UserListAdapter.Holder>(DiffCallBack) {
+class UserListAdapter(private val listItemClickListener: ListItemClickListener) :
+    ListAdapter<User, UserListAdapter.Holder>(DiffCallBack) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder = Holder(parent)
 
-    override fun onBindViewHolder(holder: Holder, position: Int) =
-        holder.bind(getItem(position))
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.itemView.setOnClickListener {
+            listItemClickListener.onItemClick(getItem(position))
+        }
+        return holder.bind(getItem(position))
+    }
 
     class Holder(parent: ViewGroup) :
         BoundHolder<LayoutUserListItemBinding>(parent.viewBinding(LayoutUserListItemBinding::inflate)) {
@@ -33,4 +38,8 @@ class UserListAdapter : ListAdapter<User, UserListAdapter.Holder>(DiffCallBack) 
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean =
             oldItem == newItem
     }
+}
+
+interface ListItemClickListener {
+    fun onItemClick(user: User)
 }

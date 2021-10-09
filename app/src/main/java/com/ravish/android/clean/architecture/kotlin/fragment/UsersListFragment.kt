@@ -6,14 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.ravish.android.clean.architecture.kotlin.adapter.ListItemClickListener
 import com.ravish.android.clean.architecture.kotlin.adapter.UserListAdapter
 import com.ravish.android.clean.architecture.kotlin.databinding.FragmentUsersListBinding
 import com.ravish.android.clean.architecture.kotlin.delegates.viewBinding
+import com.ravish.android.clean.architecture.kotlin.models.User
 import com.ravish.android.clean.architecture.kotlin.viewmodel.UserDetailsVM
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UsersListFragment : Fragment() {
+class UsersListFragment : Fragment(), ListItemClickListener {
 
     private lateinit var binding: FragmentUsersListBinding
     private val userDetailsVM: UserDetailsVM by viewModels()
@@ -36,9 +39,13 @@ class UsersListFragment : Fragment() {
 
     private fun observeListData() {
         userDetailsVM.userListData.observe(viewLifecycleOwner, {
-            binding.rvUsersList.adapter = UserListAdapter().apply {
+            binding.rvUsersList.adapter = UserListAdapter(this).apply {
                 submitList(it)
             }
         })
+    }
+
+    override fun onItemClick(user: User) {
+        findNavController().navigate(UsersListFragmentDirections.toUserDetailsFragment(user))
     }
 }

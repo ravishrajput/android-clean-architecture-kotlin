@@ -6,6 +6,7 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'kotlin-parcelize'
 }
+apply from: "jacoco.gradle"
 
 def globalConf = rootProject.ext
 
@@ -32,6 +33,7 @@ android {
             testCoverageEnabled true
             debuggable true
             minifyEnabled false
+            testCoverageEnabled true
         }
         release {
             minifyEnabled false
