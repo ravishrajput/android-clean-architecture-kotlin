@@ -95,33 +95,30 @@ kapt {
 }
 
 dependencies {
-    Map<String, String> dependencies = globalConf.dependencies
 
     implementation project(':domain')
     implementation project(':data')
 
-    implementation dependencies.androidxCore
-    implementation dependencies.appCompatKtx
-    implementation dependencies.androidMaterial
-    implementation dependencies.androidConstraintLayout
-    implementation dependencies.navGraphFragment
-    implementation dependencies.navGraphUI
-    implementation dependencies.androidLifecycle
-    implementation dependencies.networkingLib
+    implementation(deps.androidxCore)
+    implementation(deps.appCompatKtx)
+    implementation(deps.androidMaterial)
+    implementation(deps.androidConstraintLayout)
+    implementation(deps.navGraphFragment)
+    implementation(deps.navGraphUI)
+    implementation(deps.androidLifecycle)
+    implementation(deps.networkingLib)
 
-    kapt dependencies.hiltCompiler
-    implementation dependencies.hilt
+    kapt(deps.hiltCompiler)
+    implementation(deps.hilt)
 
-    implementation dependencies.retrofit
-    implementation dependencies.retrofitConverterGson
-    implementation dependencies.okhttp
-    implementation dependencies.okhttpLogging
-
-    implementation dependencies.glide
-
-    testImplementation dependencies.jUnit
-
-    androidTestImplementation dependencies.testRunner
-    androidTestImplementation dependencies.androidTestJUnit
-    androidTestImplementation dependencies.androidTestEspresso
+    implementation(deps.retrofit)
+    implementation(deps.retrofitConverterGson)
+    implementation(deps.okhttp)
+    implementation(deps.okhttpLogging)
+    implementation(deps.glide)
+    
+    testImplementation(deps.jUnit)
+    androidTestImplementation(deps.testRunner)
+    androidTestImplementation(deps.androidTestJUnit)
+    androidTestImplementation(deps.androidTestEspresso)
 }

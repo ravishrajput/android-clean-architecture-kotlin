@@ -44,16 +44,15 @@ android {
 }
 
 dependencies {
-    Map<String, String> dependencies = globalConf.dependencies
 
     implementation project(':domain')
 
-    kapt dependencies.hiltCompiler
-    implementation dependencies.hilt
+    kapt(deps.hiltCompiler)
+    implementation(deps.hilt)
 
-    implementation dependencies.retrofit
-    implementation dependencies.retrofitConverterGson
-    implementation dependencies.okhttp
-    implementation dependencies.okhttpLogging
-    implementation dependencies.moshi
+    implementation(deps.retrofit)
+    implementation(deps.retrofitConverterGson)
+    implementation(deps.okhttp)
+    implementation(deps.okhttpLogging)
+    implementation(deps.moshi)
 }

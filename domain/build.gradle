@@ -44,8 +44,7 @@ android {
 }
 
 dependencies {
-    Map<String, String> dependencies = globalConf.dependencies
 
-    kapt dependencies.hiltCompiler
-    implementation dependencies.hilt
+    kapt(deps.hiltCompiler)
+    implementation(deps.hilt)
 }
