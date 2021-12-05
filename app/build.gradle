@@ -118,6 +118,9 @@ dependencies {
     implementation(deps.glide)
     
     testImplementation(deps.jUnit)
+    testImplementation(deps.robolectric)
+    testImplementation(deps.mockitoKotlin)
+    testImplementation(deps.kotlinxCoroutinesTest)
     androidTestImplementation(deps.testRunner)
     androidTestImplementation(deps.androidTestJUnit)
     androidTestImplementation(deps.androidTestEspresso)

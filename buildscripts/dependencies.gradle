@@ -18,6 +18,9 @@ ext {
     versions.testRunner = "0.4.1"
     versions.androidTestJunit = "1.1.3"
     versions.espresso = "3.4.0"
+    versions.mockito = "4.0.0"
+    versions.robolectric = "4.7.3"
+    versions.kotlinxCoroutinesTest = "1.5.2"
 
     deps.androidxCore = "androidx.core:core-ktx:${versions.androidxCoreKtx}"
     deps.appCompatKtx = "androidx.appcompat:appcompat:${versions.androidxAppcompat}"
@@ -41,4 +44,7 @@ ext {
     deps.testRunner = "com.android.support.test:runner:${versions.testRunner}"
     deps.androidTestJUnit = "androidx.test.ext:junit:${versions.androidTestJunit}"
     deps.androidTestEspresso = "androidx.test.espresso:espresso-core:${versions.espresso}"
+    deps.robolectric = "org.robolectric:robolectric:${versions.robolectric}"
+    deps.mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${versions.mockito}"
+    deps.kotlinxCoroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinxCoroutinesTest}"
 }
